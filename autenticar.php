@@ -1,7 +1,7 @@
 <?php
 include 'conector.php';
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
     $consulta = "select count(*)as existe from evasoft.usuarios where RFC ='$username' and pass='$password';";
     if (!$resultado = $conexion->query($consulta)) {
         echo json_encode('Noo');
@@ -13,7 +13,7 @@ $password = $_GET['password'];
 
     if($existe>=1){
         session_start();
-        $_SESSION["usuario"] = $Username;
+        $_SESSION["usuario"] = $username;
         header("Location: panel.php");
     } else {
 

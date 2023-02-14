@@ -83,7 +83,7 @@
         }
 
 
-        $consulta = "select * from test.usuarios where RFC ='$valbus' and estatus='Evaluador';";
+        $consulta = "select * from evasoft.usuarios where RFC ='$valbus' and estatus='Evaluador';";
         if (!$resultado = $conexion->query($consulta)) {
             echo json_encode('Noo');
             exit;
@@ -98,7 +98,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Evaluador</h5>
                     <p class="card-text">Evaluar a los participantes.</p>';
-                    $consulta = "select evaluados from test.usuarios where RFC ='$valbus' and estatus='Evaluador';";
+                    $consulta = "select evaluados from evasoft.usuarios where RFC ='$valbus' and estatus='Evaluador';";
                     if (!$resultado = $conexion->query($consulta)) {
                         echo json_encode('Noo');
                         exit;
@@ -119,7 +119,7 @@
 
         
 
-        $consulta = "select * from test.usuarios where RFC ='$valbus' and estatus='Administrador';";
+        $consulta = "select * from evasoft.usuarios where RFC ='$valbus' and estatus='Administrador';";
         if (!$resultado = $conexion->query($consulta)) {
             echo json_encode('Noo');
             exit;
@@ -176,265 +176,6 @@
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script type="text/javascript"> 
-
-                $('#inputlicmos').on('click',()=>{vinculares('#inputlicfile','#inputlicfilevinc')})
-                $('#inputespmos').on('click',()=>{vinculares('#inputespfile','#inputespfilevinc')})
-                $('#inputmaemos').on('click',()=>{vinculares('#inputmaefile','#inputmaefilevinc')})
-                $('#inputdocmos').on('click',()=>{vinculares('#inputdocfile','#inputdocfilevinc')})
-                $('#inputidiomamos').on('click',()=>{vinculares('#inputidiomafile','#inputidiomafilevinc')})
-                $('#inputcermos').on('click',()=>{vinculares('#inputcerfile','#inputcerfilevinc')})
-                $('#inputaniomos').on('click',()=>{vinculares('#inputaniofile','#inputaniofilevinc')})
-
-                function test(){alert('test');}
-                function regresar(){
-                    $.ajax(
-                        {
-                            url: 'datos.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#inputName').val(data[0][0]);
-                            $('#inputApellidoP').val(data[0][1]);
-                            $('#inputApellidoM').val(data[0][2]);
-                            $('#inputEscuela').val(data[0][3]);
-                            $('#inputClaveP').val(data[0][4]);
-                            $('#inputCategoria').val(data[0][5]);
-                            $('#inputRFC').val(data[0][6]);
-                            $('#inputCorreo').val(data[0][7])
-                            $('#inputDescripcion').val(data[0][8]);
-                        }
-                    );
-                }
-
-                function regresaracademiaone(){
-                    $.ajax(
-                        {
-                            url: 'datosa.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#inputlic').val(data[0][0]);
-                            $('#inputliccombo [ value =' + data[0] [1] + ']').attr("selected",true);
-                            $('#inputlicfile').val(data[0][2]);
-                            $('#inputesp').val(data[0][3]);
-                            $('#inputespcombo [ value =' + data[0] [4] + ']').attr("selected",true);
-                            $('#inputespfile').val(data[0][5]);
-                            $('#inputmae').val(data[0][6]);
-                            $('#inputmaecombo [ value =' + data[0] [7] + ']').attr("selected",true);
-                            $('#inputmaefile').val(data[0][8]);
-                            $('#inputdoc').val(data[0][9]);
-                            $('#inputdoccombo [ value =' + data[0] [10] + ']').attr("selected",true);
-                            $('#inputdocfile').val(data[0][11]);
-                        }
-                    );
-                }
-
-
-                function regresaracademiatwo(){
-                    $.ajax(
-                        {
-                            url: 'datosb.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#inputidioma').val(data[0][0]);
-                            $('#inputidiomacombo [ value =' + data[0] [1] + ']').attr("selected",true);
-                            $('#inputidiomafile').val(data[0][2]);
-                            $('#inputcer').val(data[0][3]);
-                            $('#inputcercombo [ value =' + data[0] [4] + ']').attr("selected",true);
-                            $('#inputcerfile').val(data[0][5]);
-                        }
-                    );
-                }
-
-
-                function regresarpermanencia(){
-                    $.ajax(
-                        {
-                            url: 'datospermanencia.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#inputanio').val(data[0][0]);
-                            $('#inputaniofile').val(data[0][1]);
-                        }
-                    );
-                }
-
-
-                function categorias(){
-                    $('#inputDescripcion').val('ESCRIBE LA CLAVE DE LA CATEGORIA')
-                    $('#inputDescripcion').css({'color':'red'});
-                    $.ajax(
-                        {
-                            url: 'categorias.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                categoria: $('#inputCategoria').val(),
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#inputDescripcion').val(data[0][0]);
-                            $('#inputDescripcion').css({'color':'black'});
-                        }
-                    );
-                }
-
-                function guardaracademiaone(){
-                    $.ajax(
-                        {
-                            url: 'guardaracademiaone.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                                inputlic: $('#inputlic').val(),
-                                inputliccombo: $('#inputliccombo').val(),
-                                inputlicfilevinc: $('#inputlicfile').val(),
-                                inputesp: $('#inputesp').val(),
-                                inputespcombo: $('#inputespcombo').val(),
-                                inputespfilevinc: $('#inputespfile').val(),
-                                inputmae: $('#inputmae').val(),
-                                inputmaecombo: $('#inputmaecombo').val(),
-                                inputmaefilevinc: $('#inputmaefile').val(),
-                                inputdoc: $('#inputdoc').val(),
-                                inputdoccombo: $('#inputdoccombo').val(),
-                                inputdocfilevinc: $('#inputdocfile').val()
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#status_datos_2').append(data);
-
-                        }
-                    );
-                }
-
-
-
-                function guardaracademiatwo(){
-                    $.ajax(
-                        {
-                            url: 'guardaracademiatwo.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                                inputidioma: $('#inputidioma').val(),
-                                inputidiomacombo: $('#inputidiomacombo').val(),
-                                inputidiomafile: $('#inputidiomafile').val(),
-                                inputcer: $('#inputcer').val(),
-                                inputcercombo: $('#inputcercombo').val(),
-                                inputcerfile: $('#inputcerfile').val()
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#status_datos_2').append(data);
-
-                        }
-                    );
-                }
-
-                function guardarpermanencia(){
-                    $.ajax(
-                        {
-                            url: 'guardarpermanencia.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                rfc: $('#rfc').data('nombre'),
-                                inputanio: $('#inputanio').val(),
-                                inputaniofile: $('#inputaniofile').val()
-                            }
-                        }
-                    ).done(
-                        
-                            alert('Al parecer ha llenado el formulario')
-
-                        
-                    );
-                }
-
-
-
-
-                function guardardatospersonales(){
-                    $.ajax(
-                        {
-                            url: 'guardardatos.php',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                inputName: $('#inputName').val(),
-                                inputApellidoP: $('#inputApellidoP').val(),
-                                inputApellidoM: $('#inputApellidoM').val(),
-                                inputEscuela: $('#inputEscuela').val(),
-                                inputClaveP: $('#inputClaveP').val(),
-                                inputCategoria: $('#inputCategoria').val(),
-                                inputDescripcion: $('#inputDescripcion').val(),
-                                inputRFC: $('#inputRFC').val(),
-                                inputCorreo: $('#inputCorreo').val()
-                            }
-                        }
-                    ).done(
-                        function(data){
-                            $('#status_datos').append(data);
-
-                        }
-                    );
-                }
-
-
-
-                    function vinculares(dataone,datatwo){
-                        
-                                    $.ajax(
-                                        {
-                                            url: 'abrir.php',
-                                            type: 'post',
-                                            dataType: 'json',
-                                            data: {
-                                                liga: $(dataone).val(),
-                                            }
-                                        }
-                                    ).done(
-                                        function(data){
-                                            $(datatwo).replaceWith(data);
-
-                                        }
-                                    );
-                                }
-
-
-               
-                
-
-        </script>
     
 </body>
 </html>

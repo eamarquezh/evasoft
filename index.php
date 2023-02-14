@@ -35,7 +35,7 @@
         Inicio de sesión
     </div>
     <div class="card-body">
-        <form id="ingreso" action="autenticar.php" method="get">
+        <form id="ingreso" action="autenticar.php" method="post">
             <label for="username">Nombre de usuario:</label><br>
             <input type="text" id="username" name="username"><br>
             <label for="password">Contraseña:</label><br>
