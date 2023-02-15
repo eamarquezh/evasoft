@@ -8,33 +8,25 @@
 </head>
 <body>
 	
-<form id="myForm" enctype="multipart/form-data" method="post" action="">
-   CSV File:<input type="file" name="file" id="file">
-   <input id="enviar" type="submit" value="Enviar" name="enviar">
-</form>
+<input id="fileupload" type="file" name="fileupload" />
+<button id="upload-button" onclick="uploadFile()"> Upload </button>
 
 <script>
     var txtFile = document.getElementById('file');
     var btnEnviar = document.getElementById('enviar');
 
     
-    btnEnviar.addEventListener('click',alert);
-    myForm.addEventListener('submit', event => {
-    event.preventDefault();
-    });
-    
-    function autenticar() {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        document.getElementById("estatus").innerHTML = this.responseText;
-    }
-    xhttp.open("GET", "autenticar.php?username="+txtUsr.value+"&password="+txtPas.value+"");
-    xhttp.send();
-    }
 
-    function alert(){
-      console.log('Ready: '+ txtFile.value)
-    }
+  async function uploadFile() {
+      let formData = new FormData();           
+      formData.append("file", fileupload.files[0]);
+      await fetch('upload.php', {
+        method: "POST", 
+        body: formData
+      });    
+      console.log('The file has been uploaded successfully.');
+  }
+
 
 </script>
 
