@@ -84,6 +84,51 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+.grid {
+  position: relative;
+  border: 1px solid #000;
+  padding-top: 37px;
+  background: #B34C00;
+  width:100%;
+  }
+  .grid-container {
+  overflow-y: auto;
+  height: 200px;
+  }
+  table {
+  border-spacing: 0;
+  width:100%;
+  }
+  td + td {
+  border-left:1px solid #000;
+  }
+  td, th {
+  border-bottom:1px solid #000;
+  background: #fff;
+  color: #000;
+  padding: 10px 25px;
+  }
+  th {
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: transparent;
+  border: none;
+  white-space: nowrap;
+  }
+  th div{
+  position: absolute;
+  background: transparent;
+  color: #fff;
+  padding: 9px 25px;
+  top: 0;
+  margin-left: -25px;
+  line-height: normal;
+  border-left: 1px solid #800;
+  }
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -11263,6 +11308,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  
 }
+
+
 
 /*# sourceMappingURL=bootstrap.css.map */

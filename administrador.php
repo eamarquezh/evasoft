@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/soloscroll.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
@@ -56,7 +57,51 @@
                 <div class="accordion-body">
 
                     <!-- aqui poner el contenido inicio-->
+                    
+                    <div class="grid">
+                    <div class="grid-container">
+                    <table>
+                    <thead>
+                    <tr class="header">
+                    <th>User Name<div>User Name</div></th>
+                    <th>Education<div>Education</div></th>
+                    <th>Location<div>Location</div></th>
+                    <th>Location<div>Location</div></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td>Suresh Dasari</td><td>B.Tech</td><td>Chennai</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Rohini Dasari</td><td>Msc</td><td>Chennai</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Madhav Sai</td><td>MBA</td><td>Nagpur</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Praveen Kumar</td><td>B.Tech</td><td>Guntur</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Mahendra Dasari</td><td>CA</td><td>Chennai</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Nagaraju Dasari</td><td>MCA</td><td>USA</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Sateesh Alavala</td><td>MD</td><td>Vizag</td><td>Chennai</td>
+                    </tr>
+                    <tr>
+                    <td>Sudheer</td><td>B.Tech</td><td>Kakinada</td><td>Chennai</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </div>
 
+
+                    <input  id="fileupload" type="file" name="fileupload" /><br>
+                    <button class="btn-primary " id="upload-button"> Actualizar usuarios </button><br>
                     <!-- aqui poner el contenido final-->
                     
                     <div class="container text-center p-2">
@@ -369,6 +414,21 @@
       
       <div id="salida"></div>
       <script src="js/bootstrap.bundle.min.js"></script>
+      <script>
+        var txtFile = document.getElementById('file');
+        var btnUpload = document.getElementById('upload-button');
+        btnUpload.addEventListener('click',uploadFile);
+
+        async function uploadFile() {
+            let formData = new FormData();           
+            formData.append("file", fileupload.files[0]);
+            await fetch('import.php', {
+                method: "POST", 
+                body: formData
+            });    
+            console.log('Archivo cargado.');
+        }
+      </script>
       
 </body>
 </html>
