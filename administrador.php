@@ -59,46 +59,22 @@
                     <!-- aqui poner el contenido inicio-->
                     
                     <div class="grid">
-                    <div class="grid-container">
-                    <table>
-                    <thead>
-                    <tr class="header">
-                    <th>User Name<div>User Name</div></th>
-                    <th>Education<div>Education</div></th>
-                    <th>Location<div>Location</div></th>
-                    <th>Location<div>Location</div></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                    <td>Suresh Dasari</td><td>B.Tech</td><td>Chennai</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Rohini Dasari</td><td>Msc</td><td>Chennai</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Madhav Sai</td><td>MBA</td><td>Nagpur</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Praveen Kumar</td><td>B.Tech</td><td>Guntur</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Mahendra Dasari</td><td>CA</td><td>Chennai</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Nagaraju Dasari</td><td>MCA</td><td>USA</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Sateesh Alavala</td><td>MD</td><td>Vizag</td><td>Chennai</td>
-                    </tr>
-                    <tr>
-                    <td>Sudheer</td><td>B.Tech</td><td>Kakinada</td><td>Chennai</td>
-                    </tr>
-                    </tbody>
-                    </table>
+                        <div class="grid-container">
+                            <table>
+                            <thead>
+                            <tr class="header">
+                                <th>id<div>id</div></th>
+                                <th>rfc<div>rfc</div></th>
+                                <th>pass<div>pass</div></th>
+                                <th>estatus<div>estatus</div></th>
+                                <th>evaluados<div>evaluados</div></th>
+                            </tr>
+                            </thead>
+                            <tbody id="status">
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
-                    </div>
-
 
                     <input  id="fileupload" type="file" name="fileupload" /><br>
                     <button class="btn-primary " id="upload-button"> Actualizar usuarios </button><br>
@@ -415,9 +391,24 @@
       <div id="salida"></div>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script>
-        var txtFile = document.getElementById('file');
-        var btnUpload = document.getElementById('upload-button');
-        btnUpload.addEventListener('click',uploadFile);
+
+            var txtFile = document.getElementById('file');
+            var btnUpload = document.getElementById('upload-button');
+            btnUpload.addEventListener('click',uploadFile);
+            const cuerpoDelDocumento = document.body;
+            cuerpoDelDocumento.onload = inicio;
+
+            
+            async function inicio() {
+            let formData = new FormData();           
+            formData.append("file", fileupload.files[0]);
+            await fetch('vertablausuarios.php', {
+                method: "POST", 
+                body: formData
+            })
+            .then(x => x.text())
+            .then(y => document.getElementById('status').innerHTML=y);    
+            }
 
         async function uploadFile() {
             let formData = new FormData();           
@@ -425,9 +416,12 @@
             await fetch('import.php', {
                 method: "POST", 
                 body: formData
-            });    
-            console.log('Archivo cargado.');
-        }
+            })
+            .then(x => x.text())
+            .then(y => document.getElementById('status').innerHTML=y);    
+            }
+
+
       </script>
       
 </body>
