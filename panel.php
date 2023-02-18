@@ -33,7 +33,12 @@
             <div class="p-2" id="name-init">
             <?php 
                 session_start();
-                echo '<div id="rfc" data-nombre="">'.$_SESSION['usuario'].'</div>';
+                if (isset($_SESSION['usuario'])) {
+                    echo '<div id="rfc" data-nombre="">'.$_SESSION['usuario'].'</div>';
+                }else{
+                    header("Location: index.php");
+                    die();
+                }
             ?>
             </div>
             <div class="p-2">
@@ -62,7 +67,7 @@
         }
         while ($array_registro = $resultado->fetch_assoc()) {
             $estatus1 = $array_registro['estatus'];
-            $rfc = $array_registro['RFC'];
+            $rfc = $array_registro['rfc'];
         }
         if(isset($estatus1)){
             if($estatus1='Docente'){
@@ -134,7 +139,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Administrador</h5>
                     <p class="card-text">Administración de sitio.</p>
-                    <a href="#" class="btn btn-primary">Entrar</a>
+                    <a href="administrador.php" class="btn btn-primary">Entrar</a>
                 </div>
                 </div>
             </div>';

@@ -35,7 +35,12 @@
             <div class="p-2" id="name-init">
             <?php 
                 session_start();
-                echo '<div id="rfc" data-nombre="">'.$_SESSION['usuario'].'</div>';
+                if (isset($_SESSION['usuario'])) {
+                    echo '<div id="rfc" data-nombre="">'.$_SESSION['usuario'].'</div>';
+                }else{
+                    header("Location: index.php");
+                    die();
+                }
             ?>
             </div>
             <div class="p-2">
@@ -392,10 +397,10 @@
       <script src="js/bootstrap.bundle.min.js"></script>
       <script>
 
-            var txtFile = document.getElementById('file');
-            var btnUpload = document.getElementById('upload-button');
-            btnUpload.addEventListener('click',uploadFile);
+            const txtFile = document.getElementById('file');
+            const btnUpload = document.getElementById('upload-button');
             const cuerpoDelDocumento = document.body;
+            btnUpload.addEventListener('click',uploadFile);
             cuerpoDelDocumento.onload = inicio;
 
             
