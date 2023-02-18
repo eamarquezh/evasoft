@@ -399,6 +399,7 @@
 
             const txtFile = document.getElementById('file');
             const btnUpload = document.getElementById('upload-button');
+            const status1 = document.getElementById('status_datos');
             const cuerpoDelDocumento = document.body;
             btnUpload.addEventListener('click',uploadFile);
             cuerpoDelDocumento.onload = inicio;
@@ -423,7 +424,12 @@
                 body: formData
             })
             .then(x => x.text())
-            .then(y => document.getElementById('status').innerHTML=y);    
+            .then(y => document.getElementById('status').innerHTML=y);
+            
+            status1.innerHTML ="datos cargados";
+            setTimeout((e) => {
+                status1.innerHTML ="";
+            }, 2000);
             }
 
 
