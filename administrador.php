@@ -426,7 +426,7 @@
             .then(x => x.text())
             .then(y => document.getElementById('status').innerHTML=y);
             
-            status1.innerHTML ="datos cargados";
+            status1.innerHTML ="procesando...";
             setTimeout((e) => {
                 status1.innerHTML ="";
             }, 2000);
