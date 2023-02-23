@@ -55,7 +55,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Cargar usuarios
+                    Subir usuarios
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -98,261 +98,48 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Preparación Académica 1
+                    Subir tabulador
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <!-- aqui poner el contenido -->
-                    <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputlic" class="col-form-label">Licenciatura:</label>
+                    
+                    <!-- aqui poner el contenido inicio-->
+                    
+                    <div class="grid">
+                        <div class="grid-container">
+                            <table>
+                            <thead>
+                            <tr class="header">
+                                <th>clave<div>clave</div></th>
+                                <th>actividad<div>actividad</div></th>
+                                <th>puntos<div>puntos</div></th>
+                                <th>caracteristicas<div>caracteristicas</div></th>
+                                <th>condicionantes<div>condicionantes</div></th>
+                                <th>documentos<div>documentos</div></th>
+                            </tr>
+                            </thead>
+                            <tbody id="status_2">
+                            </tbody>
+                            </table>
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputlic" class="form-control" aria-describedby="passwordHelpInline"  readonly>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputliccombo"  disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Constancia</option>
-                                <option value="2">Certificado</option>
-                                <option value="3">Titulo y Cedula</option>
-                              </select>
-                          </div>
-
-
-                          <div class="col-auto">
-                            <input type="text" id="inputlicfile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputlicmos">mostrar vinculo</button>
-                            <div id="inputlicfilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checklic" name="option1">
-                          </div>
                     </div>
-                    <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputesp" class="col-form-label">Especialidad:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputesp" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputespcombo" disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Constancia</option>
-                                <option value="2">Certificado</option>
-                                <option value="3">Titulo y Cedula</option>
-                              </select>
-                          </div>
 
-                          <div class="col-auto">
-                            <input type="text" id="inputespfile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputespmos">mostrar vinculo</button>
-                            <div id="inputespfilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkesp" name="option1" value="something">
-                          </div>
-                    </div>
-                    <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputmae" class="col-form-label">Maestría:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputmae" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputmaecombo" disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Constancia</option>
-                                <option value="2">Certificado</option>
-                                <option value="3">Titulo y Cedula</option>
-                              </select>
-                          </div>
-
-                          <div class="col-auto">
-                            <input type="text" id="inputmaefile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputmaemos">mostrar vinculo</button>
-                            <div id="inputmaefilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkmae" name="option1" value="something">
-                          </div>
-                    </div>
-                    <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputdoc" class="col-form-label">Doctorado:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputdoc" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputdoccombo" disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Constancia</option>
-                                <option value="2">Certificado</option>
-                                <option value="3">Titulo y Cedula</option>
-                              </select>
-                          </div>
-
-
-                          <div class="col-auto">
-                            <input type="text" id="inputdocfile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputdocmos">mostrar vinculo</button>
-                            <div id="inputdocfilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkdoc" name="option1" value="something">
-                          </div>
-                    </div>
+                    <input  id="fileupload_2" type="file" name="fileupload_2" /><br>
+                    <button class="btn-primary " id="upload-button_2"> Actualizar tabulador </button><br>
+                    <!-- aqui poner el contenido final-->
+                    
                     <div class="container text-center p-2">
-                        <div class="col-auto">
-                            <button id="saveacademia" type="button" class="btn btn-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Continuar
-                            </button>
-                        </div>
+                        <button id="savetabuladores" type="button" class="btn btn-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Continuar
+                        </button>
                     </div>
                     <div id="status_datos_2"></div>
                 </div>
             </div>
         </div>
-        <!-- acordeon3 -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Preparación Académica 2
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <!-- aqui poner el contenido -->
-                    <div class="row p-2 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputidioma" class="col-form-label">Idioma:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputidioma" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputidiomacombo" disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Habla y lee</option>
-                                <option value="2">Habla, lee y escribe</option>
-                                <option value="3">Dominio total</option>
-                              </select>
-                          </div>
 
 
-                          <div class="col-auto">
-                            <input type="text" id="inputidiomafile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputidiomamos">mostrar vinculo</button>
-                            <div id="inputidiomafilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkidioma" name="option1" value="something">
-                          </div>
-                    </div>
-                    <div class="row p-2 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputcer" class="col-form-label">Certificacion:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputcer" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-
-                        <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example" id="inputcercombo" disabled>
-                                <option selected>Seleccionar</option>
-                                <option value="1">Incompleto</option>
-                                <option value="2">Terminado</option>
-                              </select>
-                          </div>
-
-
-                          <div class="col-auto">
-                            <input type="text" id="inputcerfile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputcermos">mostrar vinculo</button>
-                            <div id="inputcerfilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkcer" name="option1" value="something">
-                          </div>
-                    </div>
-
-                    <div class="container text-center p-2">
-                        <div class="col-auto">
-                            <button type="button" id="saveacademiatwo" class="btn btn-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- acordeon4 -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingfour">
-                <button class="accordion-button collapsed bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                    Permanencia en el subsistema
-                </button>
-            </h2>
-            <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <!-- aqui poner el contenido -->
-                    <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="inputEspe" class="col-form-label">Años de Servicio en el Subsistema:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="inputanio" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                        </div>
-
-                        <div class="col-auto">
-                            <input type="text" id="inputaniofile" class="form-control" aria-describedby="passwordHelpInline" readonly>
-                          </div>
-                          <div class="col-auto">
-                            <button type="button" class="btn btn-success text-white" id="inputaniomos">mostrar vinculo</button>
-                            <div id="inputaniofilevinc"></div>
-                          </div>
-                          <div class="col-auto">
-                          <input class="form-check-input" type="checkbox" id="checkanio" name="option1" value="something">
-                          </div>
-                    </div>
-                    
-
-                    <div class="container text-center p-2">
-                        <div class="col-auto">
-                            <label for="inputEspe" class="col-form-label"><b>El documento comprobatorio para este rubro debe ser el F.U.P. expedido por la SEP.</b></label>
-                        </div>
-                        
-                        <div class="col-auto">
-                            <button type="button" id="saveall" class="btn btn-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                Guardar y finalizar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <p></p>
             <div class="container text-center p-2">
                 <a href="panel.php" id="savedatospersonales" class="btn btn-primary">
@@ -397,14 +184,22 @@
       <script src="js/bootstrap.bundle.min.js"></script>
       <script>
 
-            const txtFile = document.getElementById('file');
+            const txtFile = document.getElementById('fileupload');
+            const txtFile_2 = document.getElementById('fileupload_2');
             const btnUpload = document.getElementById('upload-button');
             const status1 = document.getElementById('status_datos');
+            const btnUpload_2 = document.getElementById('upload-button_2');
+            const status2 = document.getElementById('status_datos_2');
             const cuerpoDelDocumento = document.body;
             btnUpload.addEventListener('click',uploadFile);
-            cuerpoDelDocumento.onload = inicio;
+            btnUpload_2.addEventListener('click',uploadFile_2);
+            cuerpoDelDocumento.onload = inicios;
 
-            
+            function inicios(){
+                inicio();
+                inicio_2();
+            }
+
             async function inicio() {
             let formData = new FormData();           
             formData.append("file", fileupload.files[0]);
@@ -414,6 +209,17 @@
             })
             .then(x => x.text())
             .then(y => document.getElementById('status').innerHTML=y);    
+            }
+
+            async function inicio_2() {
+            let formData = new FormData();           
+            formData.append("file", fileupload_2.files[0]);
+            await fetch('vertablatabulador.php', {
+                method: "POST", 
+                body: formData
+            })
+            .then(x => x.text())
+            .then(y => document.getElementById('status_2').innerHTML=y);    
             }
 
         async function uploadFile() {
@@ -427,6 +233,22 @@
             .then(y => document.getElementById('status').innerHTML=y);
             
             status1.innerHTML ="procesando...";
+            setTimeout((e) => {
+                status1.innerHTML ="";
+            }, 2000);
+            }
+
+        async function uploadFile_2() {
+            let formData = new FormData();           
+            formData.append("file", fileupload_2.files[0]);
+            await fetch('import_metricas.php', {
+                method: "POST", 
+                body: formData
+            })
+            .then(x => x.text())
+            .then(y => document.getElementById('status_2').innerHTML=y);
+            
+            status2.innerHTML ="procesando...";
             setTimeout((e) => {
                 status1.innerHTML ="";
             }, 2000);
