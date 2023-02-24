@@ -16,7 +16,7 @@
 		 $dat5=$array_registro['condicionantes'];
 		 $dat6=$array_registro['documentos'];
 				$cadena = $cadena . "<tr>
-											<td>$dat1</td>
+										<td>$dat1</td>
 										 <td>$dat2</td>
 										 <td>$dat3</td>
 										 <td>$dat4</td>
