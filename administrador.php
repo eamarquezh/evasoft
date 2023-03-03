@@ -139,6 +139,40 @@
             </div>
         </div>
 
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed bg-primary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTre" aria-expanded="false" aria-controls="collapseTre">
+                    Fecha limite
+                </button>
+            </h2>
+            <div id="collapseTre" class="accordion-collapse collapse" aria-labelledby="headingTre" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    
+                    <!-- aqui poner el contenido inicio-->
+                    
+                    
+                    <div class="container text-center">
+                    <label for="flm">Start date:</label>
+
+                        <input type="date" id="flm" name="trip-start"
+                            max="2050-12-31" pattern="\d{4}-\d{2}-\d{2}">
+                        <button id="savedatemax" type="button" class="btn btn-success text-white">
+                            guardar la fecha limite
+                        </button>
+                    
+                    </div>
+                    <!-- aqui poner el contenido final-->
+                    
+                    <div class="container text-center m-5">
+                        <button id="saveflm" type="button" class="btn btn-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTre" aria-expanded="false" aria-controls="collapseTre">
+                            Continuar
+                        </button>
+                    </div>
+                    <div id="status_datos_3"></div>
+                </div>
+            </div>
+        </div>
+
 
         <p></p>
             <div class="container text-center p-2">
@@ -190,6 +224,15 @@
             const status1 = document.getElementById('status_datos');
             const btnUpload_2 = document.getElementById('upload-button_2');
             const status2 = document.getElementById('status_datos_2');
+            const saveflm = document.getElementById('savedatemax');
+            const flm = document.getElementById('flm');
+
+            saveflm.addEventListener('click',guarda_flm);
+            function verfecha(){
+                console.log(document.getElementById('flm').Day);
+            }
+
+
             const cuerpoDelDocumento = document.body;
             btnUpload.addEventListener('click',uploadFile);
             btnUpload_2.addEventListener('click',uploadFile_2);
@@ -198,6 +241,8 @@
             function inicios(){
                 inicio();
                 inicio_2();
+                fecha_actual();
+                llenar_fecha_actual()
             }
 
             async function inicio() {
@@ -252,6 +297,40 @@
             setTimeout((e) => {
                 status1.innerHTML ="";
             }, 2000);
+            }
+
+
+            function guarda_flm() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("status_datos_3").innerHTML = this.responseText;
+                setTimeout((e) => {
+                    document.getElementById("status_datos_3").innerHTML ="";
+                                    }, 2000);
+            }
+            xhttp.open("GET", "act_fecha_max.php?flm="+flm.value);
+            xhttp.send();
+            }
+
+            function llenar_fecha_actual() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById('flm').value = this.responseText;
+            }
+            xhttp.open("GET", "fecha_max_actual.php");
+            xhttp.send();
+            }
+
+            function fecha_actual(){
+                var fecha = new Date(); //Fecha actual
+                var mes = fecha.getMonth()+1; //obteniendo mes
+                var dia = fecha.getDate(); //obteniendo dia
+                var ano = fecha.getFullYear(); //obteniendo año
+                if(dia<10)
+                    dia='0'+dia; //agrega cero si el menor de 10
+                if(mes<10)
+                    mes='0'+mes //agrega cero si el menor de 10
+                document.getElementById('flm').min=ano+"-"+mes+"-"+dia;
             }
 
 
