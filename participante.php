@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ES">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,6 +62,25 @@
                 <div class="accordion-body">
 
                     <!-- aqui poner el contenido inicio-->
+                    <div class="grid align-baseline">
+                        <div class="grid-container">
+                            <table>
+                            <thead>
+                            <tr class="header">
+                                <th>clave<div>clave</div></th>
+                                <th>actividad<div>actividad</div></th>
+                                <th>puntos<div>puntos</div></th>
+                                <th>caracteristicas<div>caracteristicas</div></th>
+                                <th>condicionantes<div>condicionantes</div></th>
+                                <th>documentos<div>documentos</div></th>
+                                <th>subir<div>subir</div></th>
+                            </tr>
+                            </thead>
+                            <tbody id="status_2">
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
                     <!-- aqui poner el contenido final-->
                 </div>
@@ -111,78 +130,19 @@
       <div id="salida"></div>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script>
-
-            const txtFile = document.getElementById('fileupload');
-            const txtFile_2 = document.getElementById('fileupload_2');
-            const btnUpload = document.getElementById('upload-button');
-            const status1 = document.getElementById('status_datos');
-            const btnUpload_2 = document.getElementById('upload-button_2');
-            const status2 = document.getElementById('status_datos_2');
             const cuerpoDelDocumento = document.body;
-            btnUpload.addEventListener('click',uploadFile);
-            btnUpload_2.addEventListener('click',uploadFile_2);
-            cuerpoDelDocumento.onload = inicios;
-
-            function inicios(){
-                inicio();
-                inicio_2();
-            }
-
-            async function inicio() {
-            let formData = new FormData();           
-            formData.append("file", fileupload.files[0]);
-            await fetch('vertablausuarios.php', {
-                method: "POST", 
-                body: formData
-            })
-            .then(x => x.text())
-            .then(y => document.getElementById('status').innerHTML=y);    
-            }
+            cuerpoDelDocumento.onload = inicio_2;
 
             async function inicio_2() {
-            let formData = new FormData();           
-            formData.append("file", fileupload_2.files[0]);
-            await fetch('vertablatabulador.php', {
+
+            await fetch('vertablatabulador_participante.php', {
                 method: "POST", 
-                body: formData
+                body: status_2
             })
             .then(x => x.text())
             .then(y => document.getElementById('status_2').innerHTML=y);    
             }
-
-        async function uploadFile() {
-            let formData = new FormData();           
-            formData.append("file", fileupload.files[0]);
-            await fetch('import.php', {
-                method: "POST", 
-                body: formData
-            })
-            .then(x => x.text())
-            .then(y => document.getElementById('status').innerHTML=y);
             
-            status1.innerHTML ="procesando...";
-            setTimeout((e) => {
-                status1.innerHTML ="";
-            }, 2000);
-            }
-
-        async function uploadFile_2() {
-            let formData = new FormData();           
-            formData.append("file", fileupload_2.files[0]);
-            await fetch('import_metricas.php', {
-                method: "POST", 
-                body: formData
-            })
-            .then(x => x.text())
-            .then(y => document.getElementById('status_2').innerHTML=y);
-            
-            status2.innerHTML ="procesando...";
-            setTimeout((e) => {
-                status1.innerHTML ="";
-            }, 2000);
-            }
-
-
       </script>
       
 </body>
