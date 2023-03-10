@@ -38,6 +38,7 @@
                 session_start();
                 if (isset($_SESSION['usuario'])) {
                     echo '<div id="rfc" data-nombre="">'.$_SESSION['usuario'].'</div>';
+                    echo '<input type="hidden" id="elrfc" value="'.$_SESSION['usuario'].'">';
                 }else{
                     header("Location: index.php");
                     die();
@@ -134,14 +135,56 @@
             cuerpoDelDocumento.onload = inicio_2;
 
             async function inicio_2() {
+            let formData = new FormData();           
+            formData.append("elrfc", document.getElementById('elrfc').value);
 
             await fetch('vertablatabulador_participante.php', {
                 method: "POST", 
-                body: status_2
+                body: formData
             })
             .then(x => x.text())
             .then(y => document.getElementById('status_2').innerHTML=y);    
             }
+
+            // Upload file
+function uploadFile() {
+
+var totalfiles = document.getElementById('files').files.length;
+
+if(totalfiles > 0 ){
+
+  var formData = new FormData();
+
+  // Read selected files
+  for (var index = 0; index < totalfiles; index++) {
+    formData.append("files[]", document.getElementById('files').files[index]);
+    formData.append("nuevonombre", document.getElementById('nuevonombre').value);
+  }
+
+  var xhttp = new XMLHttpRequest();
+
+  // Set POST method and ajax file path
+  xhttp.open("POST", "subir_items.php", true);
+
+  // call on request changes state
+  xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+
+        var response = this.responseText;
+
+        alert(response + " File uploaded.");
+
+     }
+  };
+
+  // Send request with data
+  xhttp.send(formData);
+
+}else{
+  alert("Please select a file");
+}
+
+}
             
       </script>
       

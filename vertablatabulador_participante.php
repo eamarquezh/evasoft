@@ -6,6 +6,7 @@
 		exit;
 	}
 
+	$elrfc = $_POST['elrfc'];
 	$cadena="";
 		while ($array_registro = $resultado->fetch_assoc()) {
 
@@ -15,9 +16,13 @@
 		 $dat4=$array_registro['caracteristicas'];
 		 $dat5=$array_registro['condicionantes'];
 		 $dat6=$array_registro['documentos'];
+
+		 $valor = $dat1."_".$elrfc;
+
 		 $dat7="
-		 <input type='file' /><br>
-		 <button class='btn-primary'> Actualizar tabulador </button><br>
+		 <input type='file' name='files' id='files'>
+         <input type='hidden' id='nuevonombre' value='$valor'>
+         <input type='button' id='btn_uploadfile' value='Upload' onclick='uploadFile();' >
 		 ";
 				$cadena = $cadena . "<tr>
 										<td class='align-baseline'>$dat1</td>
